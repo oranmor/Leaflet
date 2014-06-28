@@ -549,7 +549,10 @@ L.Map = L.Class.extend({
 			this.fire('movestart');
 
 			if (zoomChanged) {
-				this.fire('zoomstart');
+				this.fire('zoomstart',
+						{ from: !this._loaded ? {} : { center: this.getCenter(), zoom: this._zoom},
+						  to:   { center: center, zoom: zoom }
+						});
 			}
 		}
 
